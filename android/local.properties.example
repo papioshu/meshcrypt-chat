@@ -1,0 +1,31 @@
+# Flutter SDK Configuration
+# This file contains local configuration for Android builds
+# IMPORTANT: This should be configured during the build process
+
+# Flutter SDK path - UPDATE THIS PATH
+# Set this to your Flutter SDK installation directory
+# Example: flutter.sdk=/opt/flutter or flutter.sdk=/Users/developer/flutter
+flutter.sdk=REPLACE_WITH_FLUTTER_SDK_PATH
+
+# Flutter version information
+# These will be automatically updated by Flutter during build
+flutter.versionCode=1
+flutter.versionName=1.0.0
+
+# Android SDK configuration
+# These are typically set by the Flutter build process
+android.sdk.root=REPLACE_WITH_ANDROID_SDK_PATH
+android.ndk.root=REPLACE_WITH_ANDROID_NDK_PATH
+
+# Build configuration
+# Additional build optimizations can be specified here
+org.gradle.jvmargs=-Xmx4G -Dfile.encoding=UTF-8
+org.gradle.parallel=true
+org.gradle.caching=true
+android.enableR8.fullMode=true
+
+# F-Droid specific build settings
+# These are optimized for F-Droid distribution
+android.release.minifyEnabled=true
+android.release.shrinkResources=true
+android.enableProguardInReleaseBuilds=true

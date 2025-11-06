@@ -1,0 +1,76 @@
+name: encrypted_mesh_chat
+description: "A secure mesh networking chat application using Bluetooth LE for peer-to-peer communication with end-to-end encryption"
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Bluetooth LE communication
+  flutter_blue_plus: ^1.32.0
+  
+  # Cryptography and encryption
+  cryptography: ^2.5.0
+  crypto: ^3.0.3
+  
+  # Network connectivity monitoring
+  connectivity_plus: ^5.0.2
+  
+  # Encrypted database
+  sqflite_sqlcipher: ^2.2.2
+  path_provider: ^2.1.1
+  
+  # QR code generation and scanning
+  qr_flutter: ^4.1.0
+  qr_code_scanner: ^1.0.1
+  
+  # File operations
+  file_picker: ^6.2.1
+  
+  # File sharing and URL launching
+  share_plus: ^7.2.1
+  url_launcher: ^6.2.2
+  
+  # MIME type detection
+  mime: ^1.0.4
+  
+  # Image processing
+  image: ^4.1.7
+  
+  # Permissions
+  permission_handler: ^11.3.0
+  
+  # UI components
+  cupertino_icons: ^1.0.6
+  flutter_secure_storage: ^9.2.1
+  
+  # State management
+  provider: ^6.1.2
+  uuid: ^4.3.3
+  
+  # Utilities
+  intl: ^0.18.1
+  logger: ^2.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+  
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700

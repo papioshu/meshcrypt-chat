@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Internal storage for encrypted files -->
+    <internal-path name="internal_files" path="." />
+    <internal-path name="cache" path="cache/" />
+    <internal-path name="files" path="files/" />
+    
+    <!-- Encrypted message storage -->
+    <internal-path name="messages" path="messages/" />
+    
+    <!-- Attachment storage -->
+    <internal-path name="attachments" path="attachments/" />
+    
+    <!-- Temporary files for sharing -->
+    <cache-path name="temp" path="temp/" />
+    
+    <!-- Root of external storage (for API compatibility) -->
+    <external-path name="external" path="." />
+</paths>

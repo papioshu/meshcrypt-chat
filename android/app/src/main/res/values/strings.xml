@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">MeshChat - Privacy Mesh Chat</string>
+    <string name="app_description">Privacy-focused mesh networking chat app with end-to-end encryption</string>
+    
+    <!-- F-Droid App Summary -->
+    <string name="fdroid_summary">Privacy-focused mesh networking chat app</string>
+    <string name="fdroid_description">A privacy-focused mesh networking chat application that enables secure communication without relying on central servers. Features end-to-end encryption, BLE and LoRa support for peer-to-peer communication, and runs entirely offline for maximum privacy and security.</string>
+    
+    <!-- Permissions -->
+    <string name="permission_bluetooth_title">Bluetooth Connectivity</string>
+    <string name="permission_bluetooth_description">Required for peer-to-peer mesh networking via Bluetooth Low Energy. No personal data is collected or transmitted.</string>
+    <string name="permission_location_title">Location Access</string>
+    <string name="permission_location_description">Required for Bluetooth device discovery and mesh networking proximity features. Location data is never stored or transmitted.</string>
+    <string name="permission_storage_title">Storage Access</string>
+    <string name="permission_storage_description">Required for encrypted message storage and file attachments. All data is encrypted before storage.</string>
+    
+    <!-- Shortcuts -->
+    <string name="shortcut_main_chat">Main Chat</string>
+    <string name="shortcut_main_chat_long">Open main mesh chat interface</string>
+    <string name="shortcut_new_message">New Message</string>
+    <string name="shortcut_new_message_long">Start a new encrypted message</string>
+    <string name="shortcut_settings">Settings</string>
+    <string name="shortcut_settings_long">Open app settings and privacy controls</string>
+    
+    <!-- Feature Descriptions -->
+    <string name="feature_offline_mesh_chat">Offline mesh chat capabilities</string>
+    <string name="feature_end_to_end_encryption">End-to-end encryption for all messages</string>
+    <string name="feature_ble_connectivity">Bluetooth Low Energy connectivity</string>
+    <string name="feature_lora_support">LoRa radio support</string>
+    <string name="feature_peer_to_peer_messaging">Peer-to-peer messaging</string>
+    
+    <!-- Privacy Information -->
+    <string name="privacy_no_tracking">No tracking or analytics</string>
+    <string name="privacy_offline_first">Offline-first design</string>
+    <string name="privacy_encrypted_storage">All data encrypted at rest</string>
+    <string name="privacy_no_cloud">No cloud storage or servers</string>
+    
+    <!-- App Categories -->
+    <string name="category_security">Security</string>
+    <string name="category_communication">Communication</string>
+    <string name="category_privacy">Privacy</string>
+    
+    <!-- Contact Information -->
+    <string name="app_author">MeshChat Team</string>
+    <string name="app_maintainer">MeshChat Team</string>
+    <string name="app_contributors">Contributors welcome!</string>
+    
+    <!-- URLs -->
+    <string name="source_url">https://github.com/example/meshchat</string>
+    <string name="issue_url">https://github.com/example/meshchat/issues</string>
+    <string name="changelog_url">https://github.com/example/meshchat/releases</string>
+    <string name="privacy_policy_url">https://example.com/privacy_policy</string>
+    <string name="security_policy_url">https://example.com/security_policy</string>
+    
+    <!-- Release Information -->
+    <string name="whats_new">Initial release with secure mesh networking capabilities</string>
+    
+    <!-- Feature Flags -->
+    <string name="min_sdk_version">21</string>
+    <string name="target_sdk_version">34</string>
+</resources>

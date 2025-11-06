@@ -1,0 +1,194 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    namespace "com.example.encrypted_mesh_chat"
+    compileSdkVersion flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.example.meshchat"
+        // F-Droid minimum SDK requirement
+        minSdkVersion 21
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
+
+        // Enable core library desugaring for modern Java features
+        coreLibraryDesugaringEnabled true
+
+        // Support for both 32-bit and 64-bit ARM architectures
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+
+    signingConfigs {
+        // Release signing configuration for F-Droid
+        // F-Droid will sign with their own keys, so we'll use a placeholder
+        release {
+            // This is a placeholder configuration for F-Droid
+            // They will provide their own signing keys
+            storeFile file("f_droid_keystore.keystore")
+            storePassword "placeholder_password"
+            keyAlias "f_droid_key"
+            keyPassword "placeholder_password"
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+        }
+
+        profile {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            // Enable code shrinking and resource shrinking for release builds
+            minifyEnabled true
+            shrinkResources true
+            
+            // Use the F-Droid signing configuration
+            signingConfig signingConfigs.release
+            
+            // ProGuard configuration for release builds
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // Additional optimizations for F-Droid distribution
+            // These settings help reduce app size and improve performance
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions "default"
+    
+    productFlavors {
+        fDroid {
+            dimension "default"
+            applicationId "org.example.encrypted_mesh_chat.fdroid"
+            versionName flutterVersionName
+        }
+        
+        googlePlay {
+            dimension "default"
+            applicationId "org.example.encrypted_mesh_chat"
+            versionName flutterVersionName
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    
+    // Core library desugaring for modern Java support
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+
+    // AndroidX and Material Design components
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'androidx.activity:activity-compose:1.8.2'
+    
+    // Bluetooth and connectivity libraries
+    implementation 'no.nordicsemi.android:ble:2.6.1'
+    implementation 'no.nordicsemi.android:ble-ktx:2.6.1'
+    
+    // Encryption and security libraries
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+    implementation 'androidx.security:security-identity-credential:1.0.0-alpha03'
+    
+    // Storage and file management
+    implementation 'androidx.documentfile:documentfile:1.0.1'
+    
+    // Permissions and runtime permissions
+    implementation 'pub.devrel:easypermissions:3.0.0'
+    
+    // Background processing
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    implementation 'androidx.startup:startup-runtime:1.1.1'
+}
+
+// F-Droid specific configurations
+task prepareF_DroidRelease(type: Copy, dependsOn: 'assembleF_DroidRelease') {
+    from {
+        buildDir
+    }
+    into file("F_Droid_Release_Files")
+}
+
+// F-Droid Metadata Configuration
+ext {
+    fdroidConfig = [
+        packageName: 'com.example.meshchat',
+        appName: 'MeshChat',
+        summary: 'Privacy-focused mesh networking chat app',
+        description: 'A privacy-focused mesh networking chat application with end-to-end encryption',
+        author: 'MeshChat Team',
+        source: 'https://github.com/example/meshchat',
+        issue: 'https://github.com/example/meshchat/issues',
+        changelog: 'https://github.com/example/meshchat/releases',
+        privacy: 'https://example.com/privacy_policy',
+        license: 'GPL-3.0',
+        category: 'Security',
+        antiFeatures: [],
+        features: [
+            'offline_mesh_chat',
+            'end_to_end_encryption',
+            'ble_connectivity',
+            'lora_support',
+            'peer_to_peer_messaging'
+        ],
+        tracking: 'none',
+        data_collection: 'minimal'
+    ]
+}

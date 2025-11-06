@@ -1,0 +1,285 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.meshchat"
+    android:versionCode="1"
+    android:versionName="1.0.0">
+
+    <!-- F-Droid Metadata -->
+    <meta-data
+        android:name="fdroid.category"
+        android:value="Security" />
+    <meta-data
+        android:name="fdroid.icon"
+        android:value="@mipmap/ic_launcher" />
+    <meta-data
+        android:name="fdroid.icon_big"
+        android:value="@mipmap/ic_launcher_big" />
+    <meta-data
+        android:name="fdroid.license"
+        android:value="GPL-3.0" />
+    <meta-data
+        android:name="fdroid.source"
+        android:value="https://github.com/example/meshchat" />
+    <meta-data
+        android:name="fdroid.issue"
+        android:value="https://github.com/example/meshchat/issues" />
+    <meta-data
+        android:name="fdroid.changelog"
+        android:value="https://github.com/example/meshchat/releases" />
+    <meta-data
+        android:name="fdroid.summary"
+        android:value="Privacy-focused mesh networking chat app" />
+    <meta-data
+        android:name="fdroid.description"
+        android:value="A privacy-focused mesh networking chat application that enables secure communication without relying on central servers. Features end-to-end encryption, BLE and LoRa support for peer-to-peer communication, and runs entirely offline for maximum privacy and security." />
+    <meta-data
+        android:name="fdroid.author"
+        android:value="MeshChat Team" />
+    <meta-data
+        android:name="fdroid.maintainer"
+        android:value="MeshChat Team &lt;maintainer@example.com&gt;" />
+    <meta-data
+        android:name="fdroid.contributor"
+        android:value="Contributors welcome!" />
+    <meta-data
+        android:name="fdroid.whatsnew"
+        android:value="Initial release with secure mesh networking capabilities" />
+    <meta-data
+        android:name="fdroid.feature"
+        android:value="offline_mesh_chat" />
+    <meta-data
+        android:name="fdroid.feature"
+        android:value="end_to_end_encryption" />
+    <meta-data
+        android:name="fdroid.feature"
+        android:value="ble_connectivity" />
+    <meta-data
+        android:name="fdroid.feature"
+        android:value="lora_support" />
+    <meta-data
+        android:name="fdroid.feature"
+        android:value="peer_to_peer_messaging" />
+
+    <!-- Privacy and Security Disclosures -->
+    <meta-data
+        android:name="fdroid.privacy_policy"
+        android:value="https://example.com/privacy_policy" />
+    <meta-data
+        android:name="fdroid.security_policy"
+        android:value="https://example.com/security_policy" />
+    <meta-data
+        android:name="fdroid.tracking"
+        android:value="none" />
+    <meta-data
+        android:name="fdroid.data_collection"
+        android:value="minimal" />
+    <meta-data
+        android:name="fdroid.permission_explanation"
+        android:value="This app requires permissions for mesh networking capabilities: Bluetooth for BLE connections, Storage for encrypted message persistence, and LoRa radio access. All data is processed locally and never leaves your device without explicit user action." />
+
+    <!-- Required for F-Droid integration -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" 
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- Network and Connectivity Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- Bluetooth Low Energy Permissions -->
+    <uses-permission android:name="android.permission.BLUETOOTH" 
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" 
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" 
+        android:minSdkVersion="31" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" 
+        android:minSdkVersion="31" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" 
+        android:minSdkVersion="31" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" 
+        android:minSdkVersion="31" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" 
+        android:minSdkVersion="31" />
+    <uses-feature 
+        android:name="android.hardware.bluetooth_le" 
+        android:required="true" />
+
+    <!-- LoRa Radio Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-feature 
+        android:name="android.hardware.location" 
+        android:required="true" />
+    <uses-feature 
+        android:name="android.hardware.location.gps" 
+        android:required="false" />
+
+    <!-- Storage and File Access Permissions -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" 
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" 
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" 
+        android:minSdkVersion="30" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" 
+        android:minSdkVersion="33" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" 
+        android:minSdkVersion="33" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" 
+        android:minSdkVersion="33" />
+
+    <!-- System Permissions -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" 
+        android:minSdkVersion="31" />
+
+    <!-- Hardware Requirements -->
+    <uses-feature 
+        android:name="android.hardware.camera" 
+        android:required="false" />
+    <uses-feature 
+        android:name="android.hardware.microphone" 
+        android:required="false" />
+
+    <!-- Permission Explanations for User Understanding -->
+    <meta-data
+        android:name="fdroid.permission.bluetooth_title"
+        android:value="Bluetooth Connectivity" />
+    <meta-data
+        android:name="fdroid.permission.bluetooth_description"
+        android:value="Required for peer-to-peer mesh networking via Bluetooth Low Energy. No personal data is collected or transmitted." />
+    <meta-data
+        android:name="fdroid.permission.location_title"
+        android:value="Location Access" />
+    <meta-data
+        android:name="fdroid.permission.location_description"
+        android:value="Required for Bluetooth device discovery and mesh networking proximity features. Location data is never stored or transmitted." />
+    <meta-data
+        android:name="fdroid.permission.storage_title"
+        android:value="Storage Access" />
+    <meta-data
+        android:name="fdroid.permission.storage_description"
+        android:value="Required for encrypted message storage and file attachments. All data is encrypted before storage." />
+
+    <application
+        android:label="MeshChat - Privacy Mesh Chat"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="false"
+        android:excludeFromRecents="true"
+        android:exported="true"
+        android:theme="@style/LaunchTheme"
+        android:hardwareAccelerated="true"
+        android:requestLegacyExternalStorage="true"
+        tools:targetApi="31">
+
+        <!-- Main Activity with proper F-Droid integration -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            
+            <!-- F-Droid Main Intent Filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="fdroid.intent.category.APP_LAUNCHER" />
+            </intent-filter>
+
+            <!-- Privacy-focused URL handling -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="meshchat" />
+            </intent-filter>
+
+            <!-- File sharing for encrypted attachments -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="text/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- Mesh Network Discovery Service -->
+        <service
+            android:name=".MeshDiscoveryService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- Encrypted Message Persistence Service -->
+        <service
+            android:name=".MessageStorageService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- Boot Receiver for automatic service startup -->
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- File Provider for secure file sharing -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- Don't keep this activity in back stack for security -->
+        <meta-data
+            android:name="android.app.shortcuts"
+            android:resource="@xml/shortcuts" />
+
+        <!-- Security Configuration -->
+        <meta-data
+            android:name="android.app.allowBackup"
+            android:value="false" />
+        <meta-data
+            android:name="android.app.fullBackupContent"
+            android:value="false" />
+    </application>
+
+    <!-- F-Droid Security Declarations -->
+    <meta-data
+        android:name="fdroid.no_internet"
+        android:value="true" />
+    <meta-data
+        android:name="fdroid.offline_only"
+        android:value="true" />
+    <meta-data
+        android:name="fdroid.min_sdk"
+        android:value="21" />
+    <meta-data
+        android:name="fdroid.target_sdk"
+        android:value="34" />
+    <meta-data
+        android:name="fdroid.require_feature"
+        android:value="bluetooth_le" />
+
+</manifest>
